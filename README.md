@@ -48,8 +48,3 @@ Python, Streamlit, Pandas, NumPy, Plotly, GitHub, Streamlit Community Cloud
 참고 자료
 
 KOSIS 국가통계포털, OECD Data, OECD Social Expenditure Database, 한국은행 경제통계 자료, 핀란드 기본소득 실험 보고서, 경기도 청년기본소득 자료, 캐나다 기본소득 정책 논의 자료
-
-English Summary
-
-Basic Income × Youth Unemployment & Housing Crisis Hub is an interactive dashboard about basic income, youth unemployment, and housing insecurity.
-It uses public indicators and simple hypothetical simulations to compare different policy scenarios.
