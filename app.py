@@ -65,6 +65,45 @@ st.markdown(
         opacity: 1 !important;
     }
 
+    /* Selectbox / dropdown contrast fix */
+    div[data-baseweb="select"] {
+        background-color: #FFFFFF !important;
+        border-radius: 10px !important;
+    }
+
+    div[data-baseweb="select"] * {
+        color: #111827 !important;
+        opacity: 1 !important;
+        font-weight: 700 !important;
+    }
+
+    div[data-baseweb="select"] input {
+        color: #111827 !important;
+        -webkit-text-fill-color: #111827 !important;
+    }
+
+    div[data-baseweb="popover"],
+    div[data-baseweb="popover"] * {
+        color: #111827 !important;
+        background-color: #FFFFFF !important;
+        opacity: 1 !important;
+    }
+
+    div[role="listbox"],
+    div[role="option"],
+    div[role="option"] * {
+        color: #111827 !important;
+        background-color: #FFFFFF !important;
+        opacity: 1 !important;
+        font-weight: 700 !important;
+    }
+
+    div[role="option"]:hover,
+    div[role="option"]:hover * {
+        background-color: #E5E7EB !important;
+        color: #111827 !important;
+    }
+
     .main-title {
         font-size: clamp(2rem, 5vw, 3.1rem);
         font-weight: 950;
