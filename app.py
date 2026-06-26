@@ -307,7 +307,7 @@ TEXT = {
         "ai_policy": "통합 정책 제언 생성",
         "data_warning": "실제 통계와 가상 시뮬레이션을 분리해 해석해야 합니다",
         "project_note": "한국어 기본 / English toggle",
-        "created_by": "제작",
+        "created_by": "제작 및 기획",
         "footer": "이 대시보드는 월간 게시판 탐구 프로젝트를 위한 교육용 분석 허브입니다 실제 정책 예측이나 공식 통계 발표가 아니며, 모든 시뮬레이션 결과는 단순화된 가정에 기반합니다",
     },
     "en": {
@@ -347,7 +347,7 @@ TEXT = {
         "ai_policy": "Generate integrated policy recommendation",
         "data_warning": "Actual statistics and hypothetical simulation outputs should be interpreted separately",
         "project_note": "Korean-first dashboard / English toggle included",
-        "created_by": "Created by",
+        "created_by": "Planned & Created by",
         "footer": "This dashboard is an educational analysis hub for a monthly board research project It is not an official forecast or statistical publication, and all simulation results are based on simplified assumptions",
     },
 }
@@ -358,6 +358,7 @@ T = TEXT[LANG]
 # DATA
 # =========================================================
 years = [2019, 2020, 2021, 2022, 2023, 2024]
+
 main_df = pd.DataFrame(
     {
         "year": years,
@@ -636,10 +637,10 @@ st.sidebar.markdown(f"### 👥 {T['created_by']}")
 st.sidebar.markdown(
     """
     <div class="creator-card">
-    김단아<br>
-    김민정<br>
-    어하은<br>
-    정서희
+    30307 김단아<br>
+    30309 김민정<br>
+    30317 어하은<br>
+    30324 정서희
     </div>
     """,
     unsafe_allow_html=True,
@@ -729,10 +730,16 @@ with tab2:
     caption()
 
     col1, col2 = st.columns(2)
+
     with col1:
         section("OECD 주요국 청년실업률 비교" if LANG == "ko" else "OECD youth unemployment comparison")
         country_col = "country_ko" if LANG == "ko" else "country_en"
-        fig2 = px.bar(oecd_df, x=country_col, y="youth_unemployment", labels={country_col: "국가" if LANG == "ko" else "Country", "youth_unemployment": "청년실업률 (%)" if LANG == "ko" else "Youth unemployment rate (%)"})
+        fig2 = px.bar(
+            oecd_df,
+            x=country_col,
+            y="youth_unemployment",
+            labels={country_col: "국가" if LANG == "ko" else "Country", "youth_unemployment": "청년실업률 (%)" if LANG == "ko" else "Youth unemployment rate (%)"},
+        )
         fig2.update_traces(marker_color=["#4F8CFF", "#32D583", "#A78BFA", "#FFB020", "#F97066", "#94A3B8"])
         apply_plotly_style(fig2, height=360, x_title="국가" if LANG == "ko" else "Country", y_title="%")
         st.plotly_chart(fig2, use_container_width=True)
@@ -740,7 +747,12 @@ with tab2:
 
     with col2:
         section("청년 주거 부담률 추이" if LANG == "ko" else "Youth housing burden trend")
-        fig3 = px.area(main_df, x="year", y="housing_burden", labels={"year": "연도" if LANG == "ko" else "Year", "housing_burden": "주거부담률 (%)" if LANG == "ko" else "Housing burden rate (%)"})
+        fig3 = px.area(
+            main_df,
+            x="year",
+            y="housing_burden",
+            labels={"year": "연도" if LANG == "ko" else "Year", "housing_burden": "주거부담률 (%)" if LANG == "ko" else "Housing burden rate (%)"},
+        )
         fig3.update_traces(line={"width": 3, "color": "#FFB020"}, fillcolor="rgba(255,176,32,0.28)")
         apply_plotly_style(fig3, height=360, x_title="연도" if LANG == "ko" else "Year", y_title="%")
         st.plotly_chart(fig3, use_container_width=True)
@@ -770,6 +782,7 @@ with tab2:
 # =========================================================
 with tab3:
     col1, col2 = st.columns(2)
+
     with col1:
         section("기본소득 재원 조달 방식별 부담 비교" if LANG == "ko" else "Fiscal burden by funding method")
         method_col = "method_ko" if LANG == "ko" else "method_en"
@@ -802,7 +815,11 @@ with tab3:
         y="avg_wage",
         size="stability",
         color=sector_col,
-        labels={"youth_employment_rate": "청년 고용률 (%)" if LANG == "ko" else "Youth employment rate (%)", "avg_wage": "평균임금 (만원)" if LANG == "ko" else "Average wage (KRW 10,000)", sector_col: "업종" if LANG == "ko" else "Sector"},
+        labels={
+            "youth_employment_rate": "청년 고용률 (%)" if LANG == "ko" else "Youth employment rate (%)",
+            "avg_wage": "평균임금 (만원)" if LANG == "ko" else "Average wage (KRW 10,000)",
+            sector_col: "업종" if LANG == "ko" else "Sector",
+        },
     )
     apply_plotly_style(fig6, height=440, x_title="청년 고용률 (%)" if LANG == "ko" else "Youth employment rate (%)", y_title="평균임금 (만원)" if LANG == "ko" else "Average wage")
     st.plotly_chart(fig6, use_container_width=True)
@@ -850,6 +867,7 @@ with tab4:
         st.plotly_chart(fig7, use_container_width=True)
 
         col_a, col_b = st.columns(2)
+
         with col_a:
             fig8 = go.Figure()
             fig8.add_trace(go.Bar(x=["현재", "시뮬레이션"] if LANG == "ko" else ["Current", "Simulation"], y=housing_path, marker_color=["#94A3B8", "#FFB020"]))
@@ -892,6 +910,7 @@ with tab4:
             result["feasibility"],
         ]
         radar_values = [max(0, min(100, value)) for value in radar_values]
+
         fig11 = go.Figure()
         fig11.add_trace(
             go.Scatterpolar(
@@ -909,7 +928,11 @@ with tab4:
             title="복지 만족도 지수 레이더 차트" if LANG == "ko" else "Welfare satisfaction radar index",
             font={"color": "#F8FAFC", "size": 14},
             title_font={"color": "#FFFFFF", "size": 20},
-            polar={"bgcolor": "#0F1117", "radialaxis": {"visible": True, "range": [0, 100], "tickfont": {"color": "#CBD5E1"}, "gridcolor": "rgba(226,232,240,0.28)"}, "angularaxis": {"tickfont": {"color": "#F8FAFC", "size": 13}, "gridcolor": "rgba(226,232,240,0.20)"}},
+            polar={
+                "bgcolor": "#0F1117",
+                "radialaxis": {"visible": True, "range": [0, 100], "tickfont": {"color": "#CBD5E1"}, "gridcolor": "rgba(226,232,240,0.28)"},
+                "angularaxis": {"tickfont": {"color": "#F8FAFC", "size": 13}, "gridcolor": "rgba(226,232,240,0.20)"},
+            },
             paper_bgcolor="#0F1117",
             plot_bgcolor="#0F1117",
             margin={"l": 40, "r": 40, "t": 70, "b": 40},
@@ -935,6 +958,7 @@ with tab5:
     voucher = st.session_state.get("last_voucher", True)
 
     section(T["last_scenario"])
+
     s1, s2, s3, s4 = st.columns(4)
     s1.metric(T["monthly_amount"], f"{amount}만원" if LANG == "ko" else f"KRW {amount * 10000:,}")
     s2.metric(T["target"], target)
@@ -942,6 +966,7 @@ with tab5:
     s4.metric(T["voucher"], "ON" if voucher else "OFF")
 
     col1, col2, col3 = st.columns(3)
+
     with col1:
         st.markdown(
             f"""
@@ -953,6 +978,7 @@ with tab5:
             """,
             unsafe_allow_html=True,
         )
+
     with col2:
         st.markdown(
             f"""
@@ -964,6 +990,7 @@ with tab5:
             """,
             unsafe_allow_html=True,
         )
+
     with col3:
         st.markdown(
             f"""
@@ -977,6 +1004,7 @@ with tab5:
         )
 
     section("국제 비교 정책 테이블" if LANG == "ko" else "International policy comparison table")
+
     if LANG == "ko":
         policy_table = pd.DataFrame(
             {
@@ -995,6 +1023,7 @@ with tab5:
                 "Limitation": ["Employment effect was limited", "Closer to a welfare-state model than full UBI", "Funding and political consensus are key variables"],
             }
         )
+
     st.dataframe(policy_table, use_container_width=True, hide_index=True)
 
     if st.button(T["ai_policy"], key="ai_policy"):
