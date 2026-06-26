@@ -1,56 +1,55 @@
-# Basic Income × Youth Unemployment & Housing Crisis
+기본소득 × 청년 실업·주거 위기 분석 허브
 
-An interactive policy simulation dashboard exploring whether basic income can respond to youth unemployment and housing insecurity
+이 프로젝트는 기본소득이 청년 실업과 주거 문제에 어느 정도 도움이 될 수 있는지 살펴보기 위해 만든 정책 분석 대시보드이다.
+청년층이 겪는 고용 불안, 높은 주거비, 복지 사각지대 문제를 함께 보고 싶어 사회복지와 경영경제 관점을 같이 사용했다.
 
-## Project Overview
+가장 중심이 되는 질문은 다음과 같다.
 
-This project combines social welfare and business-economics perspectives to examine basic income as a possible response to youth unemployment and housing cost burdens
+기본소득은 청년 실업과 주거 위기의 현실적인 해법이 될 수 있을까?
 
-The dashboard focuses on one central question:
+대시보드에서는 실제 공공 통계에 기반한 분석과 가상 시뮬레이션을 구분했다. 사용자는 기본소득 지급액, 지급 대상, 재원 조달 방식, 청년 주거 바우처 포함 여부 등을 바꿔 보며 정책 효과가 어떻게 달라지는지 비교할 수 있다.
 
-**Can basic income become a realistic solution to youth unemployment and housing insecurity?**
+주요 기능
 
-## Key Features
+* 연도별 핵심 지표 확인
+* 한국 청년 실업률 추이 분석
+* OECD 주요국 청년 실업률 비교
+* 청년 주거 부담 변화 분석
+* 핀란드, 경기도, 캐나다 기본소득 사례 정리
+* 재원 조달 방식별 부담 비교
+* 소비 진작 효과 시뮬레이션
+* 업종별 청년 고용률과 평균임금 비교
+* 가상 정책 시뮬레이션
+* 단기·중기·장기 정책 제언
+* 한국어 UI와 영어 전환 기능
 
-- Overview KPI cards
-- Youth unemployment trend analysis
-- Youth housing burden analysis
-- OECD youth unemployment comparison
-- Basic income experiment case cards
-- Funding method comparison
-- Consumption impact simulation
-- Interactive policy scenario simulator
-- Short-term, mid-term, and long-term policy recommendations
+대시보드 구성
 
-## Dashboard Structure
+1. 개요
+2. 사회복지 분석
+3. 경영경제 분석
+4. 가상 시뮬레이션
+5. 정책 제언
 
-1. Overview  
-2. Social Welfare Analysis  
-3. Business & Economic Analysis  
-4. Virtual Policy Simulation  
-5. Policy Recommendations  
+방법론과 한계
 
-## Methodology
+기본 분석에는 KOSIS, OECD Data, 한국은행 자료, 공공 정책 보고서 등을 참고했다. 다만 이 프로젝트는 교육용 분석이기 때문에 실제 정책 효과를 정확히 예측하는 모델은 아니다.
 
-The basic analysis sections use publicly available statistical indicators from sources such as KOSIS, OECD, and Bank of Korea materials
+시뮬레이션 탭은 가상 시나리오를 바탕으로 만들었다. 따라서 결과를 공식적인 정책 예측으로 보기보다는, 정책 조건이 바뀔 때 어떤 변화가 생길 수 있는지 이해하기 위한 참고 자료로 보는 것이 적절하다.
 
-The simulation tab is based on a hypothetical scenario model and should not be interpreted as an official economic forecast
+또한 청년 실업률과 주거 부담률은 자료마다 기준이 조금씩 다를 수 있다. 한국 통계에서는 청년을 15~29세 기준으로 보는 경우가 많고, OECD 청년 실업률 자료에서는 15~24세 기준을 쓰는 경우가 많다. 그래서 두 자료를 단순히 같은 기준으로 비교하기에는 한계가 있다.
 
-## Tech Stack
+기본소득의 실제 효과도 노동시장 상황, 물가, 주택 공급, 세금 구조, 기존 복지제도와의 관계에 따라 달라질 수 있다.
 
-- Python
-- Streamlit
-- Pandas
-- NumPy
-- Plotly
+기술 스택
 
-## Data Sources
+Python, Streamlit, Pandas, NumPy, Plotly, GitHub, Streamlit Community Cloud
 
-- KOSIS
-- OECD Data
-- Bank of Korea
-- Public reports on basic income experiments and youth welfare policy
+참고 자료
 
-## Author
+KOSIS 국가통계포털, OECD Data, OECD Social Expenditure Database, 한국은행 경제통계 자료, 핀란드 기본소득 실험 보고서, 경기도 청년기본소득 자료, 캐나다 기본소득 정책 논의 자료
 
-Haeun Eo
+English Summary
+
+Basic Income × Youth Unemployment & Housing Crisis Hub is an interactive dashboard about basic income, youth unemployment, and housing insecurity.
+It uses public indicators and simple hypothetical simulations to compare different policy scenarios.
